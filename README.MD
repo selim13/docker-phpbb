@@ -171,3 +171,28 @@ This image is based on a stock official Alpine image with apache2 and php5
 packages from the Alpine Linux repository, so you can drop their custom 
 configuration files to `/etc/apache2/conf.d` and `/etc/php5/conf.d`.
 
+## Pass user's IP from proxy
+
+If you are planning to start a container behind proxy 
+(like [nginx-proxy](https://github.com/jwilder/nginx-proxy)), it will probably
+be a good idea to get user's real IP instead of proxy one. For this, you can use
+Apache RemoteIP module. Create a configuration file:
+
+```apache
+LoadModule remoteip_module modules/mod_remoteip.so
+
+RemoteIPHeader X-Real-IP
+RemoteIPInternalProxy nginx-proxy
+```
+
+Here `X-Real-IP` is a header name, where proxy passed user's real IP and
+`nginx-proxy` is proxy host name.
+
+Then push it to `/etc/apache2/conf.d/` directory, for example, by extending this
+image:
+
+```dockerfile
+FROM selim13/phpbb:3.1
+
+COPY remoteip.conf /etc/apache2/conf.d
+```
