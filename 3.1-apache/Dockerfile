@@ -41,14 +41,14 @@ COPY phpbb/config.php /phpbb/www
 RUN mkdir -p /run/apache2 \
     && chown apache:apache /run/apache2
 
-COPY apache2/httpd.conf /etc/apache2
-COPY apache2/conf.d/* /etc/apache2/conf.d
+COPY apache2/httpd.conf /etc/apache2/
+COPY apache2/conf.d/* /etc/apache2/conf.d/
 
-COPY php5/php.ini /etc/php5
-COPY php5/php-cli.ini /etc/php5
-COPY php5/conf.d/* /etc/php5/conf.d
+COPY php5/php.ini /etc/php5/
+COPY php5/php-cli.ini /etc/php5/
+COPY php5/conf.d/* /etc/php5/conf.d/
 
-COPY start.sh /usr/local/bin
+COPY start.sh /usr/local/bin/
 
 RUN chown -R apache:apache /phpbb
 WORKDIR /phpbb/www
