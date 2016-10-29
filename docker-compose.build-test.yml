@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  phpbb:
+    build: './3.1-apache'
+    ports:
+      - '127.0.0.1:8000:80'
+    volumes:
+      - '/phpbb/sqlite'
+      - '/phpbb/www/files'
+      - '/phpbb/www/store'
+      - '/phpbb/www/images/avatars/upload'
+    environment:
+      PHPBB_INSTALL: 'true'
