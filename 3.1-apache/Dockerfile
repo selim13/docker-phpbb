@@ -54,10 +54,10 @@ COPY start.sh /usr/local/bin/
 RUN chown -R apache:apache /phpbb
 WORKDIR /phpbb/www
 
-VOLUME /phpbb/sqlite
-VOLUME /phpbb/www/files
-VOLUME /phpbb/www/store
-VOLUME /phpbb/www/images/avatars/upload
+#VOLUME /phpbb/sqlite
+#VOLUME /phpbb/www/files
+#VOLUME /phpbb/www/store
+#VOLUME /phpbb/www/images/avatars/upload
 
 ENV PHPBB_INSTALL= \
     PHPBB_DB_DRIVER=sqlite3 \
