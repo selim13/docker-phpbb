@@ -28,13 +28,13 @@ ENV PHPBB_SHA256 '198fda1a0bd833d42e0d4f4fe26a47d656a6e087ed9a561e06b0940de131a2
 
 WORKDIR /tmp
 
-ADD https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.tar.bz2 phpbb.tar.bz2
-RUN echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
+RUN curl -SL https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
+    && echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
     && tar -xjf phpbb.tar.bz2 \
     && mkdir /phpbb \
     && mkdir /phpbb/sqlite \
-    && mv phpBB3 /phpbb/www
-RUN rm -f phpbb.tar.bz2
+    && mv phpBB3 /phpbb/www \
+    && rm -f phpbb.tar.bz2
 
 COPY phpbb/config.php /phpbb/www
 
