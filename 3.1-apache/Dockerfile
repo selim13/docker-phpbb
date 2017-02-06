@@ -19,7 +19,8 @@ RUN apk add --no-cache curl \
   php5-xml \
   php5-zlib \
   php5-zip \
-  php5-gd
+  php5-gd \
+  su-exec
 
 ### phpBB
 ENV PHPBB_VERSION 3.1.10
