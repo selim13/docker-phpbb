@@ -5,22 +5,24 @@ MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
 RUN apk add --no-cache curl \
   imagemagick \
   apache2 \
-  php5-apache2 \
-  php5-cli \
-  php5-ctype \
-  php5-opcache \
-  php5-curl \
-  php5-dom \
-  php5-openssl \
-  php5-ftp \
-  php5-mysqli \
-  php5-sqlite3 \
-  php5-pgsql \
-  php5-json \
-  php5-xml \
-  php5-zlib \
-  php5-zip \
-  php5-gd \
+  php7 \
+  php7-apache2 \
+  php7-ctype \
+  php7-curl \
+  php7-dom \
+  php7-ftp \
+  php7-gd \
+  php7-iconv \
+  php7-json \
+  php7-mysqli \
+  php7-opcache \
+  php7-openssl \
+  php7-pgsql \
+  php7-sqlite3 \
+  php7-tokenizer \
+  php7-xml \
+  php7-zlib \
+  php7-zip \
   su-exec
 
 ### phpBB
@@ -40,17 +42,15 @@ RUN curl -SL https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.tar.bz2 
 COPY phpbb/config.php /phpbb/www
 
 ### Server
-RUN mkdir -p /run/apache2 \
-    && chown apache:apache /run/apache2
+RUN mkdir -p /run/apache2 /phpbb/opcache \
+    && chown apache:apache /run/apache2 /phpbb/opcache
 
 COPY apache2/httpd.conf /etc/apache2/
 COPY apache2/conf.d/* /etc/apache2/conf.d/
 
-COPY php5/php.ini /etc/php5/
-COPY php5/php-cli.ini /etc/php5/
-COPY php5/conf.d/* /etc/php5/conf.d/
-# Alpine 3.6 doesn't create this symlink for PHP5 in favour of PHP7
-RUN ln -s /usr/bin/php5 /usr/bin/php
+COPY php/php.ini /etc/php7/
+COPY php/php-cli.ini /etc/php7/
+COPY php/conf.d/* /etc/php7/conf.d/
 
 COPY start.sh /usr/local/bin/
 
