@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.6
 
 MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
 
@@ -48,6 +48,8 @@ COPY apache2/conf.d/* /etc/apache2/conf.d/
 COPY php5/php.ini /etc/php5/
 COPY php5/php-cli.ini /etc/php5/
 COPY php5/conf.d/* /etc/php5/conf.d/
+# Alpine 3.6 doesn't create this symlink for PHP5 in favour of PHP7
+RUN ln -s /usr/bin/php5 /usr/bin/php
 
 COPY start.sh /usr/local/bin/
 
