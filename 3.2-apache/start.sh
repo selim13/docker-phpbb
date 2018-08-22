@@ -2,7 +2,7 @@
 
 set -e
 
-[[ "${PHPBB_INSTALL}" = "true" ]] && echo "" > config.php
+[[ "${PHPBB_INSTALL}" = "true" ]] && rm config.php
 [[ "${PHPBB_INSTALL}" != "true" ]] && rm -rf install
 
 db_wait() {

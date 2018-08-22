@@ -1,33 +1,33 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
 MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
 
 RUN apk add --no-cache curl \
-  imagemagick \
-  apache2 \
-  php7 \
-  php7-apache2 \
-  php7-ctype \
-  php7-curl \
-  php7-dom \
-  php7-ftp \
-  php7-gd \
-  php7-iconv \
-  php7-json \
-  php7-mysqli \
-  php7-opcache \
-  php7-openssl \
-  php7-pgsql \
-  php7-sqlite3 \
-  php7-tokenizer \
-  php7-xml \
-  php7-zlib \
-  php7-zip \
-  su-exec
+    imagemagick \
+    apache2 \
+    php7 \
+    php7-apache2 \
+    php7-ctype \
+    php7-curl \
+    php7-dom \
+    php7-ftp \
+    php7-gd \
+    php7-iconv \
+    php7-json \
+    php7-mysqli \
+    php7-opcache \
+    php7-openssl \
+    php7-pgsql \
+    php7-sqlite3 \
+    php7-tokenizer \
+    php7-xml \
+    php7-zlib \
+    php7-zip \
+    su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.2.1
-ENV PHPBB_SHA256 'ea1c7e08aa3466aa325deca5d8998a24d103bfecf23826ce61fe5390b6a09f71'
+ENV PHPBB_VERSION 3.2.2
+ENV PHPBB_SHA256 'bab64dbd79f6f1bf2c0c306b33cea460ffe58c56ff1e81aac87ee10545291302'
 
 WORKDIR /tmp
 
