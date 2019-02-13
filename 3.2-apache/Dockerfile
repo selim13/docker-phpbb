@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.9
 
 MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
 
@@ -26,8 +26,8 @@ RUN apk add --no-cache curl \
     su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.2.3
-ENV PHPBB_SHA256 'a04e2f5972180d7e3cee37ae3d72552fd12e846d0e62e7b7993a6a0d317464e7'
+ENV PHPBB_VERSION 3.2.5
+ENV PHPBB_SHA256 '4c50f8657a6f19e73468bac563c1804e112c54c1f700d24803cacc22d080d08b'
 
 WORKDIR /tmp
 
