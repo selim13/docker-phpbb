@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
 MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
 
@@ -23,12 +23,12 @@ RUN apk add --no-cache curl \
   su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.1.11
-ENV PHPBB_SHA256 '12a2b4644508757717643d115e7991a1ed5438e6f80e0be47295b11cc37aeb02'
+ENV PHPBB_VERSION 3.1.12
+ENV PHPBB_SHA256 '14476397931bc73642a2144430b7ed45db75bcd51369b0115ca34c755602fb65'
 
 WORKDIR /tmp
 
-RUN curl -SL https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
+RUN curl -SL https://download.phpbb.com/pub/release/3.1/${PHPBB_VERSION}/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
     && echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
     && tar -xjf phpbb.tar.bz2 \
     && mkdir /phpbb \
