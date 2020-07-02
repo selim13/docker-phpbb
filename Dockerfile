@@ -1,6 +1,6 @@
 FROM alpine:3.9
 
-MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
+LABEL maintainer="selim013@gmail.com"
 
 RUN apk add --no-cache curl \
     imagemagick \
