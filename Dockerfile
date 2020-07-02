@@ -1,6 +1,6 @@
-FROM alpine:3.9
+FROM alpine:3.12
 
-MAINTAINER Dmitry Seleznyov <selim013@gmail.com>
+LABEL maintainer="selim013@gmail.com"
 
 RUN apk add --no-cache curl \
     imagemagick \
@@ -26,12 +26,12 @@ RUN apk add --no-cache curl \
     su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.2.9
-ENV PHPBB_SHA256 '4faf0f469d5ad5fe56c4ac44aa8cf9166c9381f225267a428f45462d1417a0ca'
+ENV PHPBB_VERSION 3.3.0
+ENV PHPBB_SHA256 'a6234ac9dcf9086c025ece29a0a235f997a92bb9a994eff0ddcf8917e841262f'
 
 WORKDIR /tmp
              
-RUN curl -SL https://download.phpbb.com/pub/release/3.2/${PHPBB_VERSION}/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
+RUN curl -SL https://download.phpbb.com/pub/release/3.3/${PHPBB_VERSION}/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
     && echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
     && tar -xjf phpbb.tar.bz2 \
     && mkdir /phpbb \

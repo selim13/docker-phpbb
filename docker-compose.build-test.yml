@@ -2,7 +2,7 @@ version: '2'
 
 services:
   phpbb:
-    build: './3.2-apache'
+    build: .
     ports:
       - '127.0.0.1:8000:80'
     volumes:

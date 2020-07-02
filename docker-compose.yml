@@ -8,7 +8,7 @@ volumes:
 
 services:
   phpbb:
-    image: selim13/phpbb:3.2-apache
+    image: selim13/phpbb:3.3
     ports:
       - '127.0.0.1:8000:80'
     volumes:
