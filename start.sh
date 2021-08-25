@@ -17,7 +17,7 @@ db_wait() {
 db_migrate() {
     if [[ "${PHPBB_DB_AUTOMIGRATE}" = "true" && "${PHPBB_INSTALL}" != "true" ]]; then
         echo "$(date) - applying migrations"
-        su-exec apache php bin/phpbbcli.php db:migrate
+        su-exec apache php8 bin/phpbbcli.php db:migrate
     fi
 }
 

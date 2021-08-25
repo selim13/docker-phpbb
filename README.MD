@@ -1,6 +1,6 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`3.3.0`, `latest`](https://github.com/selim13/docker-phpbb/blob/master/Dockerfile)
+-	[`3.3.4`, `latest`](https://github.com/selim13/docker-phpbb/blob/master/Dockerfile)
 -	[`3.2-apache`, `3-apache`, `3.2`, `3`, `apache` (*3.2-apache/Dockerfile*)](https://github.com/selim13/docker-phpbb/blob/master/3.2-apache/Dockerfile)
 -	[`3.1-apache`, `3.1` (*3.1-apache/Dockerfile*)](https://github.com/selim13/docker-phpbb/blob/master/3.1-apache/Dockerfile)
 

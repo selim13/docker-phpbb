@@ -1,36 +1,37 @@
-FROM alpine:3.12
+FROM alpine:3.14
 
 LABEL maintainer="selim013@gmail.com"
 
 RUN apk add --no-cache curl \
     imagemagick \
     apache2 \
-    php7 \
-    php7-apache2 \
-    php7-ctype \
-    php7-curl \
-    php7-dom \
-    php7-ftp \
-    php7-gd \
-    php7-iconv \
-    php7-json \
-    php7-mysqli \
-    php7-opcache \
-    php7-openssl \
-    php7-pgsql \
-    php7-sqlite3 \
-    php7-tokenizer \
-    php7-xml \
-    php7-zlib \
-    php7-zip \
+    php8 \
+    php8-apache2 \
+    php8-ctype \
+    php8-curl \
+    php8-dom \
+    php8-ftp \
+    php8-gd \
+    php8-iconv \
+    php8-json \
+    php8-mbstring \
+    php8-mysqli \
+    php8-opcache \
+    php8-openssl \
+    php8-pgsql \
+    php8-sqlite3 \
+    php8-tokenizer \
+    php8-xml \
+    php8-zlib \
+    php8-zip \
     su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.3.0
-ENV PHPBB_SHA256 'a6234ac9dcf9086c025ece29a0a235f997a92bb9a994eff0ddcf8917e841262f'
+ENV PHPBB_VERSION 3.3.4
+ENV PHPBB_SHA256 'a2436e375acf9ec8846fda82ffeda51774627967308fb3b71d395b90a1acfe8b'
 
 WORKDIR /tmp
-             
+
 RUN curl -SL https://download.phpbb.com/pub/release/3.3/${PHPBB_VERSION}/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
     && echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
     && tar -xjf phpbb.tar.bz2 \
