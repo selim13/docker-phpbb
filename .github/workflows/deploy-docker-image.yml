@@ -37,6 +37,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           tags: |
+            type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           images: |
