@@ -26,11 +26,11 @@ RUN apk add --no-cache curl \
     su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.2.9
-ENV PHPBB_SHA256 '4faf0f469d5ad5fe56c4ac44aa8cf9166c9381f225267a428f45462d1417a0ca'
+ENV PHPBB_VERSION 3.2.11
+ENV PHPBB_SHA256 'e863c354554c975e38d5ffca2ebbacea3e9c317fda4c925d6da242156286ce43'
 
 WORKDIR /tmp
-             
+
 RUN curl -SL https://download.phpbb.com/pub/release/3.2/${PHPBB_VERSION}/phpBB-${PHPBB_VERSION}.tar.bz2 -o phpbb.tar.bz2 \
     && echo "${PHPBB_SHA256}  phpbb.tar.bz2" | sha256sum -c - \
     && tar -xjf phpbb.tar.bz2 \
