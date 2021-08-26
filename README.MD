@@ -1,12 +1,11 @@
+# phpBB3 docker image
+
+Lightweight, Alpine based [phpBB](https://www.phpbb.com/) docker image.
+
 # Supported tags and respective `Dockerfile` links
 
--	[`3.3.4`, `latest`](https://github.com/selim13/docker-phpbb/blob/master/Dockerfile)
--	[`3.2-apache`, `3-apache`, `3.2`, `3`, `apache` (*3.2-apache/Dockerfile*)](https://github.com/selim13/docker-phpbb/blob/master/3.2-apache/Dockerfile)
--	[`3.1-apache`, `3.1` (*3.1-apache/Dockerfile*)](https://github.com/selim13/docker-phpbb/blob/master/3.1-apache/Dockerfile)
-
-# phpBB3
-
-Very popular php forum engine.
+- [`3.3`, `3.3.4`, `latest`](https://github.com/selim13/docker-phpbb/blob/master/Dockerfile) bundled with PHP 8
+- [`3.2`, `3.2.11`](https://github.com/selim13/docker-phpbb/blob/3.2-alpine-apache/Dockerfile) bundled with PHP 7.2
 
 # How to use this image
 
@@ -17,7 +16,7 @@ installer script, just run a temporary container with `PHPBB_INSTALL=true`
 environment variable:
 
 ```console
-$ docker run -p 8000:80 --name phpbb-install -e PHPBB_INSTALL=true -d selim13/phpbb:3.1
+$ docker run -p 8000:80 --name phpbb-install -e PHPBB_INSTALL=true -d selim13/phpbb:3.3
 ```
 
 Point your browser to the http://localhost:8000 to begin the 
@@ -44,7 +43,7 @@ You can start a container as follows:
 
 
 ```console
-$ docker run --name phpbb -d selim13/phpbb:3.1
+$ docker run --name phpbb -d selim13/phpbb:3.3
 ```
 
 By default, it uses SQLite3 as a database backend, so you will need to supply
@@ -53,7 +52,7 @@ it with a database file. It's default path is `/phpbb/sqlite/sqlite.db`.
 You can import it from the temporary installation container above:
 
 ```console
-$ docker run --volumes-from phpbb-install --name phpbb -d selim13/phpbb:3.1
+$ docker run --volumes-from phpbb-install --name phpbb -d selim13/phpbb:3.3
 ```
 
 Or just copy it inside container if you have one from previous phpBB
@@ -73,7 +72,7 @@ $ docker run --name phpbb     \
     -e PHPBB_DB_PORT=3306     \
     -e PHPBB_DB_NAME=phpbb    \
     -e PHPBB_DB_USER=phpbb    \
-    -e PHPBB_DB_PASSWD=pass -d selim13/phpbb:3.1
+    -e PHPBB_DB_PASSWD=pass -d selim13/phpbb:3.3
 ```
 
 ## Environment variables 
@@ -198,7 +197,7 @@ Then push it to `/etc/apache2/conf.d/` directory, for example, by extending this
 image:
 
 ```dockerfile
-FROM selim13/phpbb:3.1
+FROM selim13/phpbb:3.3
 
 COPY remoteip.conf /etc/apache2/conf.d
 ```
