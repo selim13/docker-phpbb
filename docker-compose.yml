@@ -1,5 +1,3 @@
-version: '2'
-
 volumes:
   phpbb-sqlite: {}
   phpbb-files: {}

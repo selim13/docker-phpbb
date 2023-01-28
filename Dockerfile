@@ -1,34 +1,34 @@
-FROM alpine:3.14
+FROM alpine:3.17
 
 LABEL maintainer="selim013@gmail.com"
 
 RUN apk add --no-cache curl \
     imagemagick \
     apache2 \
-    php8 \
-    php8-apache2 \
-    php8-ctype \
-    php8-curl \
-    php8-dom \
-    php8-ftp \
-    php8-gd \
-    php8-iconv \
-    php8-json \
-    php8-mbstring \
-    php8-mysqli \
-    php8-opcache \
-    php8-openssl \
-    php8-pgsql \
-    php8-sqlite3 \
-    php8-tokenizer \
-    php8-xml \
-    php8-zlib \
-    php8-zip \
+    php81 \
+    php81-apache2 \
+    php81-ctype \
+    php81-curl \
+    php81-dom \
+    php81-ftp \
+    php81-gd \
+    php81-iconv \
+    php81-json \
+    php81-mbstring \
+    php81-mysqli \
+    php81-opcache \
+    php81-openssl \
+    php81-pgsql \
+    php81-sqlite3 \
+    php81-tokenizer \
+    php81-xml \
+    php81-zlib \
+    php81-zip \
     su-exec
 
 ### phpBB
-ENV PHPBB_VERSION 3.3.4
-ENV PHPBB_SHA256 'a2436e375acf9ec8846fda82ffeda51774627967308fb3b71d395b90a1acfe8b'
+ENV PHPBB_VERSION 3.3.9
+ENV PHPBB_SHA256 8eacc10caff2327d51019ed2677b55ff1afdc68a3a7aaeee9ac29747775fe04f
 
 WORKDIR /tmp
 
@@ -48,11 +48,8 @@ RUN mkdir -p /run/apache2 /phpbb/opcache \
 
 COPY apache2/httpd.conf /etc/apache2/
 COPY apache2/conf.d/* /etc/apache2/conf.d/
-
-COPY php/php.ini /etc/php7/
-COPY php/php-cli.ini /etc/php7/
-COPY php/conf.d/* /etc/php7/conf.d/
-
+COPY php/php.ini php/php-cli.ini /etc/php81/
+COPY php/conf.d/* /etc/php81/conf.d
 COPY start.sh /usr/local/bin/
 
 RUN chown -R apache:apache /phpbb
